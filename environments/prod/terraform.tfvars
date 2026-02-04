@@ -12,7 +12,6 @@ disk_size_gb = 127
 image_resource_group_name   = "microimage-prod-rg"
 gallery_name                = "microvm_Gallery"
 image_name                  = "microvm_Image"
-image_version               = "1.0.5"
 
 os_type                     = "Windows"
 os_state                    = "Generalized"

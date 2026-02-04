@@ -28,7 +28,7 @@ if ($LASTEXITCODE -ne 0) { Write-Error "Terraform apply (create_vm) failed."; ex
 
 # 2. Apply only the image module (now that VM exists)
 Write-Host "[STEP 2] Creating Image (create_image module)"
-terraform -chdir="$envFolder" apply -auto-approve -target="module.create_image" -target="module.create_disk"
+terraform -chdir="$envFolder" apply -auto-approve -target="module.create_image" -target="module.create_disk" -var="image_version=$env:GITHUB_RUN_ID"
 if ($LASTEXITCODE -ne 0) { Write-Error "Terraform apply (create_image) failed."; exit 1 }
 
 # 3. Remove image version from state to avoid dependency issues

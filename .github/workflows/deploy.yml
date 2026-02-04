@@ -38,6 +38,3 @@ jobs:
         shell: pwsh
         run: |
           ./deploy.ps1 prod
-
-
-
