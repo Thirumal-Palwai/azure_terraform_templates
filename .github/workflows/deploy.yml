@@ -31,6 +31,6 @@ jobs:
 
       - name: Run Terraform deploy (PowerShell)
         shell: pwsh
-        working-directory: azure_terraform_templates
         run: |
           ./deploy.ps1 prod
+
