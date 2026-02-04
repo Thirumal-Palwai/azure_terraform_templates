@@ -16,7 +16,6 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      # 🔑 REQUIRED for Terraform backend + provider
       - name: Set ARM environment variables
         shell: bash
         run: |
@@ -26,14 +25,12 @@ jobs:
           echo "ARM_SUBSCRIPTION_ID=${{ secrets.AZURE_SUBSCRIPTION_ID }}" >> $GITHUB_ENV
           echo "ARM_USE_AZUREAD=true" >> $GITHUB_ENV
 
-      - name: Verify Azure access (optional)
+      - name: Verify Azure access
         run: |
           az account show
-          az storage account list
 
-    #   - name: Run Terraform deploy (PowerShell)
-    #     shell: pwsh
-    #     working-directory: azure_terraform_templates
-    #     run: |
-    #       ./deploy.ps1 prod
-
+      - name: Run Terraform deploy (PowerShell)
+        shell: pwsh
+        working-directory: azure_terraform_templates
+        run: |
+          ./deploy.ps1 prod
